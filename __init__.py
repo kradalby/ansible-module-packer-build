@@ -31,6 +31,8 @@ def main():
         command_tokens.extend(
             ['-var-file={}'.format(module.params['variables'])])
 
+    command_tokens.extend([module.params['template']])
+
     ova_tool_result = module.run_command(command_tokens)
 
     if ova_tool_result[0] != 0:
