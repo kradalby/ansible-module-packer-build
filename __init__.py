@@ -42,7 +42,7 @@ def main():
     command_tokens.extend([template_file])
 
     ova_tool_result = module.run_command(
-        cwd=module.params['template_dir'], command_tokens)
+        command_tokens, cwd=module.params['template_dir'])
 
     if ova_tool_result[0] != 0:
         module.fail_json(
