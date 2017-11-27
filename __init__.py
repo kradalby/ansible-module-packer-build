@@ -11,7 +11,7 @@ def main():
             packer_path=dict(default="", type='str'),
             template_dir=dict(required=True, type='str'),
             template=dict(required=True, type='str'),
-            variable=dict(default="", type='str')),
+            variable_file=dict(default="", type='str')),
         supports_check_mode=True,
     )
 
@@ -35,9 +35,9 @@ def main():
         'build',
     ])
 
-    if module.params['variable']:
+    if module.params['variable_file']:
         command_tokens.extend(
-            ['-var-file={}'.format(module.params['variables'])])
+            ['-var-file={}'.format(module.params['variable_file'])])
 
     command_tokens.extend([template_file])
 
